@@ -1,3 +1,75 @@
 <h1>
   {{title}}
 </h1>
+<div>
+  <ul>
+    <li *ngFor="let product of products" (click)="addToCart(product)"> {{product.name}}</li>
+  </ul>
+</div>
+<div>
+  <hr>
+  Newly added Product: {{ newItem.name }}
+  <h3>Cart Items</h3>
+  <!--<ul>
+    	<li *ngFor="let item of cart">Name: {{item.name}} - Price:{{item.price}} - Quantity: {{item.qty}} - Total: {{item.qty * item.price | currency}}</li>
+    </ul>-->
+</div>
+<hr>
+
+<hr>
+
+
+  <table class="table">
+        <tr>
+            
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let item of cart">
+            <td><label for="name">{{item.name}}</label></td>           
+            <td><input type="number" value="{{item.qty}}"></td>
+            <td><label for="price">${{item.price}}"</label></td>
+            <td>${{item.qty * item.price }}</td>
+            <td>
+                <!--[<a href (click)="removeItem(index)">X</a>]-->
+                <button (click)="removeItem(index)">Remove Item</button>
+                <!--[<a href >X</a>]-->
+            </td>
+        </tr>
+        <tr>
+            <!--<td><a href (click)="addItem()" class="btn btn-small">add item</a></td>
+            <td></td>-->
+            <td>Total:</td>
+            <td>${{cartTotal()}}</td>
+        </tr>
+    </table>
+
+      
+    <!--<table class="table">
+        <tr>
+            
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Cost</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+        <tr ng:repeat="let item of cart.items">
+            <td><input type="text" ng:model="item.name"class="input-small"></td>           
+            <td><input type="number" ng:model="item.qty" ng:required class="input-mini"></td>
+            <td><input type="number" ng:model="item.price" ng:required class="input-mini"></td>
+            <td>{{item.qty * item.price | currency}}</td>
+            <td>
+                [<a href ng:click="removeItem(index)">X</a>]
+            </td>
+        </tr>
+        <tr>
+            <td><a href ng:click="addItem()" class="btn btn-small">add item</a></td>
+            <td></td>
+            <td>Total:</td>
+            <td>{{total() | currency}}</td>
+        </tr>
+    </table>-->
